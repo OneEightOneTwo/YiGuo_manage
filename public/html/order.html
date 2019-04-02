@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>YiGuo订单列表</title>
+  <link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+</head>
+<!-- 框架主体 -->
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">YiGuo后台管理系统</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item ">
+          <a class="" href="javascript:;">商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="category.html">商品分类</a></dd>
+            <dd><a href="javascript:;">添加商品</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="user.html">用户列表</a></dd>
+            <dd><a href="javascript:;">添加用户</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="order.html">订单列表</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+  </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script src="../layui-v2.4.5/layui/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+//---------------
+layui.use('table', function(){
+  var table = layui.table;
+  
+  table.render({
+    elem: '#test'
+    ,url:'/test/table/demo3.json'
+    ,toolbar: true
+    ,title: '用户数据表'
+    ,totalRow: true
+    ,cols: [[
+      {field:'id', title:'ID', width:60, fixed: 'left', unresize: true, sort: true, totalRowText: '合计行'}
+      ,{field:'username', title:'订单号', width:120, edit: 'text'}
+      ,{field:'email', title:'商品名称', width:120, edit: 'text'}
+      ,{field:'experience', title:'总价', width:80, sort: true, totalRow: true}
+      ,{field:'sex', title:'下单用户', width:100, edit: 'text',}
+      ,{field:'logins', title:'下单时间', width:100,}
+      ,{field:'sign', title:'支付状态',width:100,}
+      ,{field:'city', title:'支付来源', width:100}
+      ,{field:'ip', title:'联系人', width:120}
+      ,{field:'joinTime', title:'联系电话', width:120}
+      ,{field:'operate', title:'操作', width:150}
+    ]]
+    ,page: true
+    ,response: {
+      statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+    }
+    ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
+      return {
+        "code": res.status, //解析接口状态
+        "msg": res.message, //解析提示文本
+        "count": res.total, //解析数据长度
+        "data": res.rows.item //解析数据列表
+      };
+    }
+  });
+});
+
+
+</script>
+</body>
+</html>
