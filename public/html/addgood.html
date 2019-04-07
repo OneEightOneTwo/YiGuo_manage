@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
     <style type="text/css">
-    .add_categroy{
+      .add_categroy{
         display: block !important;
-    }
-    .layui-form-select{
+      }
+      .layui-form-select{
         display: none !important;
-    }
-     #img-box img{width: 200px;height: 200px;margin: 10px;}
-     #img-box div{display: inline-block;float: left;}
-     /*提交图片按钮的样式*/
-     #uploadBtn{width: 100px;height: 40px;border: 1px solid #ccc;text-align: center;line-height: 40px; border-radius: 10px;position: relative;background: #FFB800;}
-     #uploadBtn input{width: 100%;height: 100%;opacity: 0;}
-     #uploadBtn span{position: absolute;top: 0;left: 0;bottom: 0;right: 0;margin:auto;font-size: 12px;color:#fff;}
-     #img-box{
+      }
+      #img-box img{width: 200px;height: 200px;margin: 10px;}
+      #img-box div{display: inline-block;float: left;}
+      /*提交图片按钮的样式*/
+      #uploadBtn{width: 100px;height: 40px;border: 1px solid #ccc;text-align: center;line-height: 40px; border-radius: 10px;position: relative;background: #FFB800;}
+      #uploadBtn input{width: 100%;height: 100%;opacity: 0;}
+      #uploadBtn span{position: absolute;top: 0;left: 0;bottom: 0;right: 0;margin:auto;font-size: 12px;color:#fff;}
+      #img-box{
         width: 100%;
         height: 220px;
         border:1px solid #ccc;
         margin:20px 0;
-     }
-  </style>
-  <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
-  <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
-       
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
+    <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.js"></script>
+    <script type="text/javascript" src="../javascripts/public.js"></script>
+    <script type="text/javascript" src="../javascripts/addgood.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -50,14 +53,14 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <span>贤心</span>
         </a>
-        <dl class="layui-nav-child">
+        <!-- <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
-        </dl>
+        </dl> -->
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href=""  id="outName">退了</a></li>
     </ul>
   </div>
   
@@ -68,22 +71,22 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">商品管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">商品列表</a></dd>
-            <dd><a href="javascript:;">商品分类</a></dd>
-            <dd><a href="javascript:;">添加商品</a></dd>
+            <dd><a href="goodlist.html">商品列表</a></dd>
+            <dd><a href="category.html">商品分类</a></dd>
+            <dd><a href="addgood.html">添加商品</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户列表</a></dd>
-            <dd><a href="javascript:;">添加用户</a></dd>
+            <dd><a href="userlist.html">用户列表</a></dd>
+            <dd><a href="adduser.html">添加用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">订单管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">订单列表</a></dd>
+            <dd><a href="order.html">订单列表</a></dd>
           </dl>
         </li>
       </ul>
@@ -127,11 +130,11 @@
               <div class="layui-inline">
                 <label class="layui-form-label">原价：</label>
                 <div class="layui-input-inline" style="width: 100px;">
-                  <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input before_price">
+                  <input type="text" name="price_min" placeholder="￥" autocomplete="off" class="layui-input oldprice">
                 </div>
                 <div class="layui-form-mid" style='margin-left: 20px;'>现价：</div>
                 <div class="layui-input-inline" style="width: 100px;">
-                  <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input now_price">
+                  <input type="text" name="price_max" placeholder="￥" autocomplete="off" class="layui-input nowprice">
                 </div>
               </div>
             </div>
@@ -140,7 +143,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label ">商品库存：</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="password" required lay-verify="required" placeholder="请输入商品库存" autocomplete="off" class="layui-input stock">
+                    <input type="text" name="password" required lay-verify="required" placeholder="请输入商品库存" autocomplete="off" class="layui-input inventory">
                 </div>
             </div>
             <!-- 商品库存结束 -->
@@ -148,7 +151,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">上线</label>
                 <div class="layui-input-block">
-                  <input type="checkbox" name="switch" lay-skin="switch">
+                  <input type="checkbox" name="switch" lay-skin="switch" class="switch">
                 </div>
             </div>
             <!-- 商品上架结束 -->
@@ -168,6 +171,7 @@
                 </div>
             </div>
             <div id="img-box"></div>
+            <!-- <input type="file" /> -->
             <!-- 商品图片结束 -->
             <!-- 商品介绍开始 -->
             <div class="layui-form-item layui-form-text">
@@ -203,41 +207,9 @@ layui.use('element', function(){
   var element = layui.element;
   
 });
-//============表单============
-//Demo
-layui.use('form', function(){
-  var form = layui.form;
-  
-  //监听提交
-  form.on('submit(formDemo)', function(data){
-    layer.msg(JSON.stringify(data.field));
-    return false;
-  });
-});
 
-//======================选择图片并显示出来========================
-    var input=document.getElementById("uploadfile");
-    var div;
-    // 当用户上传时触发事件
-    input.onchange=function(){
-        readFile(this);
-    }
-    //处理图片并添加都dom中的函数
-    var readFile=function(obj){
-        // 获取input里面的文件组
-        var fileList=obj.files;
-        //对文件组进行遍历，可以到控制台打印出fileList去看看
-        for(var i=0;i<fileList.length;i++){
-            var reader= new FileReader();
-            reader.readAsDataURL(fileList[i]);
-             // 当文件读取成功时执行的函数
-            reader.onload=function(e){
-                div=document.createElement('div');
-                div.innerHTML='<img src="'+this.result+'" />';
-                document.getElementById("img-box").appendChild(div);
-            }
-        }
-}
+
+
 </script>
 </body>
 </html>

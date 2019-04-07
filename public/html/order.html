@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>YiGuo订单列表</title>
   <link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+  <script src="../layui-v2.4.5/layui/layui.js"></script>
+  <script type="text/javascript" src="../javascripts/jquery.js"></script>
+  <script type="text/javascript" src="../javascripts/public.js"> </script>
+  <script type="text/javascript" src="../javascripts/order.js"></script>
 </head>
 <!-- 框架主体 -->
 <body class="layui-layout-body">
@@ -29,14 +33,14 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <span>贤心</span>
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="" id="outName">退了</a></li>
     </ul>
   </div>
   
@@ -44,19 +48,19 @@
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item ">
+        <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">商品管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="goodlist.html">商品列表</a></dd>
             <dd><a href="category.html">商品分类</a></dd>
-            <dd><a href="javascript:;">添加商品</a></dd>
+            <dd><a href="addgood.html">添加商品</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item layui-nav-itemed">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
             <dd><a href="user.html">用户列表</a></dd>
-            <dd><a href="javascript:;">添加用户</a></dd>
+            <dd><a href="adduser.html">添加用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-itemed">
@@ -71,8 +75,66 @@
   
   <div class="layui-body">
     <!-- 内容主体区域 -->
+    
     <div style="padding: 15px;">
-    <table class="layui-hide" id="test" lay-filter="test"></table>
+      
+      <!-- <button class="layui-btn allDel" style="margin-right:50px">
+        <i class="layui-icon">&#xe640;</i> 删除
+      </button> -->
+        <span style="color:#009E94">商品查询：</span>
+        <div class="layui-inline">
+          <input class="layui-input" name="id" id="goods-txt" autocomplete="off">
+        </div>
+        <button class="layui-btn goods-search" data-type="reload">搜索</button>
+
+        <span style="color:#009E94;margin-left: 50px">联系人查询：</span>
+        <div class="layui-inline">
+          <input class="layui-input" name="id" id="contact-txt" autocomplete="off">
+        </div>
+        <button class="layui-btn contact-search"  data-type="reload">搜索</button>
+      <table class="layui-table" style="width:100%;margin-top: 30px">
+        <thead>
+          <tr>
+            <!-- <th ><input type="checkbox" style='width:20px;cursor: pointer;' id='checkedAll'> </th> -->
+            <th style='width:50px;text-align: center'>ID</th>
+            <th style="width:120px;text-align: center">订单号</th>
+            <th style="width:150px;text-align: center">商品名称</th>
+            <th style="width:70px;text-align: center">总价</th>
+            <th style="width:100px;text-align: center">下单用户</th>
+            <th style="width:120px;text-align: center">下单时间</th>
+            <th style="width:50px;text-align: center">支付状态</th>
+            <th style="width:50px;text-align: center">订单来源</th>
+            <th style="width:100px;text-align: center">联系人</th>
+            <th style="width:100px;text-align: center">联系电话</th>
+            <!-- <th style="width:160px;text-align: center">操作</th> -->
+          </tr> 
+        </thead>
+        <tbody class='tbody' id='tboay'>
+            <!-- <tr>
+                <td><input type="checkbox" name=""  lay-skin="primary"style='width:20px;cursor: pointer;'> </td>
+                <td style="text-align: center">001</td>
+                <td style="text-align: center">385705283096510185</td>
+                <td style="text-align: center">新疆库尔勒精选香梨1kg约120g/个</td>
+                <td style="text-align: center">156</td>
+                <td style="text-align: center">小橙子</td>
+                <td style="text-align: center">2018.10.22</td>
+                <td style="text-align: center">已支付</td>
+                <td style="text-align: center">易果App</td>
+                <td style="text-align: center">刘靖琛</td>
+                <td style="text-align: center">13574537224</td>
+                <td>
+                    <button class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i>
+                    </button>
+                    <button class="layui-btn layui-btn-sm">
+                      详情
+                  </button>
+                </td>
+              </tr> -->
+        </tbody>
+      </table>
+      <!-- <div id="demo5"></div> -->
+      <!-- <div id="test1"></div> -->
   </div>
   </div>
   
@@ -81,52 +143,13 @@
     © layui.com - 底部固定区域
   </div>
 </div>
-<script src="../layui-v2.4.5/layui/layui.js"></script>
+
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
   var element = layui.element;
   
 });
-//---------------
-layui.use('table', function(){
-  var table = layui.table;
-  
-  table.render({
-    elem: '#test'
-    ,url:'/test/table/demo3.json'
-    ,toolbar: true
-    ,title: '用户数据表'
-    ,totalRow: true
-    ,cols: [[
-      {field:'id', title:'ID', width:60, fixed: 'left', unresize: true, sort: true, totalRowText: '合计行'}
-      ,{field:'username', title:'订单号', width:120, edit: 'text'}
-      ,{field:'email', title:'商品名称', width:120, edit: 'text'}
-      ,{field:'experience', title:'总价', width:80, sort: true, totalRow: true}
-      ,{field:'sex', title:'下单用户', width:100, edit: 'text',}
-      ,{field:'logins', title:'下单时间', width:100,}
-      ,{field:'sign', title:'支付状态',width:100,}
-      ,{field:'city', title:'支付来源', width:100}
-      ,{field:'ip', title:'联系人', width:120}
-      ,{field:'joinTime', title:'联系电话', width:120}
-      ,{field:'operate', title:'操作', width:150}
-    ]]
-    ,page: true
-    ,response: {
-      statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
-    }
-    ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据
-      return {
-        "code": res.status, //解析接口状态
-        "msg": res.message, //解析提示文本
-        "count": res.total, //解析数据长度
-        "data": res.rows.item //解析数据列表
-      };
-    }
-  });
-});
-
-
 </script>
 </body>
 </html>

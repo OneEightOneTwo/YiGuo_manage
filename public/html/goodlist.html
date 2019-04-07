@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+      table{
+        text-align: center;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
+    <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">YiGuo后台管理</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="goodlist.html">商品列表</a></dd>
+            <dd><a href="category.html">商品分类</a></dd>
+            <dd><a href="addgood.html">添加商品</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="userlist.html">用户列表</a></dd>
+            <dd><a href="adduser.html">添加用户</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="order.html">订单列表</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+               <div style="padding: 30px 0 0 30px;">
+            <button class="layui-btn addBtn ">
+                        <i class="layui-icon">&#xe608;</i> 添加
+            </button>
+            <button class="layui-btn allDel">
+                        <i class="layui-icon">&#xe640;</i> 删除
+            </button>
+            <table class="layui-table" style='width:100%;margin-top: 20px;'>
+              <thead>
+                <tr>
+                  <th style="width:20px; text-align:center;">
+                    <input type="checkbox" name=""  lay-skin="primary" id='checkedAll'>
+                  </th>
+                  <th style="width:5%;text-align:center;">ID</th>
+                  <th style='width:12%;text-align:center;'>商品名称</th>
+                  <th style='width:20%;text-align:center;'>商品图片</th>
+                  <th style='width:10%;text-align:center;'>分类</th>
+                  <th style='width:10%;text-align:center;'>原价</th>
+                  <th style='width:10%;text-align:center;'>
+                    现价
+                    <i class="layui-icon">&#xe619;</i>
+                    <i class="layui-icon">&#xe61a;</i>
+                  </th>
+                  <th style='width:10%;text-align:center;'>
+                    库存
+                    <i class="layui-icon">&#xe619;</i>
+                    <i class="layui-icon">&#xe61a;</i>
+                  </th>
+                  <th style='width:11%;text-align:center;'>添加时间</th>
+                  <th style='width:12%;text-align:center;'>操作</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <tr>
+                  <td >
+                    <input type="checkbox" name="" title="写作" lay-skin="primary" >
+                  </td>
+                  <td>01</td>
+                  <td>香梨</td>
+                  <td>图片</td>
+                  <td>国产水果</td>
+                  <td>30</td>
+                  <td>28</td>
+                  <td>400</td>
+                  <td>time</td>
+                  <td>
+                      <button class="layui-btn layui-btn-sm" style='margin-left: 15px;'>
+                        <i class="layui-icon">&#xe642;</i>
+                      </button>
+                      <button class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
+                  </td>
+                </tr>
+                <!-- <tr>
+                  <td >
+                    <input type="checkbox" name="" title="" lay-skin="primary" >
+                  </td>
+                  <td style='text-align: center;'>01</td>
+                  <td style='text-align: center;'>香梨</td>
+                  <td style='text-align: center;'>国产水果</td>
+                  <td style='text-align: center;'>30</td>
+                  <td style='text-align: center;'>28</td>
+                  <td style='text-align: center;'>400</td>
+                  <td style='text-align: center;'>time</td>
+                  <td>
+                      <button class="layui-btn layui-btn-sm" style='margin-left: 15px;'>
+                        <i class="layui-icon">&#xe642;</i>
+                      </button>
+                      <button class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+       </div>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+<script src="../layui-v2.4.5/layui/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+
+//==================================
+
+</script>
+<script type="text/html" id="toolbarDemo">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+  </div>
+</script>
+ 
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+</body>
+</html>
