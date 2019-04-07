@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" type="text/css" href="layui-v2.4.5/layui/css/layui.css" />
+<<<<<<< HEAD
   <script type="text/javascript" src="layui-v2.4.5/layui/layui.js"></script>
   <script type="text/javascript" src="./javascripts/jquery.js"></script>
   <script type="text/javascript" src="./javascripts/echarts.js"></script>
   <script type="text/javascript" src="./javascripts/index.js"></script>
+=======
+  <script src="javascripts/echarts.min.js"></script>
+  <script src="javascripts/index.js"></script>
+  <script src="javascripts/jquery.js"></script>
+  <script type="text/javascript" src="layui-v2.4.5/layui/layui.js">
+  
+       
+  </script>
+>>>>>>> hanhan
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -50,7 +60,7 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">商品管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="html/goodlist.html">商品列表</a></dd>
             <dd><a href="html/category.html">商品分类</a></dd>
             <dd><a href="html/addgood.html">添加商品</a></dd>
           </dl>
@@ -78,6 +88,8 @@
       <!-- 内容主体区域 -->
       <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
     <div id="main" style="width: 100%;height:400px;"></div>  
+      <div id="main2" style="width: 400px;height:300px;float: left;margin-right:50px"></div>
+      <div id="main1" style="width: 400px;height:300px;float: left;"></div>
     </div>
   </div>
   <div class="layui-footer">
@@ -85,6 +97,10 @@
     © layui.com - 底部固定区域
   </div>
 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> hanhan
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
