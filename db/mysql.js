@@ -14,7 +14,7 @@ let db = (sql, params, callback) => {
         if (err) throw err; // not connected!
         // Use the connection
         connection.query(sql, [params], function (error, results, fields) {
-            console.log(results);
+            // console.log(results);
             callback(results);
             // When done with the connection, release it.
             connection.release();

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>YiGuo商品分类</title>
-  <link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/shade.css" />
+    
+    <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery.js"></script>
+    <script type="text/javascript" src="../javascripts/public.js">
+         
+    </script>
+    <script type="text/javascript" src="../javascripts/category.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo">YiGuo后台管理系统</div>
+    <div class="layui-logo">YiGuo后台管理</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -28,14 +36,14 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <span>贤心</span>
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="" id="outName">退了</a></li>
     </ul>
   </div>
   
@@ -46,16 +54,16 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">商品管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="goodlist.html">商品列表</a></dd>
             <dd><a href="category.html">商品分类</a></dd>
-            <dd><a href="javascript:;">添加商品</a></dd>
+            <dd><a href="addgood.html">添加商品</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="user.html">用户列表</a></dd>
-            <dd><a href="javascript:;">添加用户</a></dd>
+            <dd><a href="userlist.html">用户列表</a></dd>
+            <dd><a href="adduser.html">添加用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -72,21 +80,20 @@
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
       <div style='margin:30px 0 30px 20px'>
-        <button class="layui-btn">增加&nbsp;&nbsp;<i class="layui-icon"></i></button>
-        <button class="layui-btn">删除&nbsp;&nbsp;<i class="layui-icon"></i></button>
+        <button class="layui-btn addBtn">增加&nbsp;&nbsp;<i class="layui-icon"></i></button>
+        <!-- <button class="layui-btn">删除&nbsp;&nbsp;<i class="layui-icon"></i></button> -->
       </div>
-    <table class="layui-table" lay-even="" lay-skin="row" style='margin-left: 20px;width:700px'>
+    <table class="layui-table" lay-even="" lay-skin="row" style='margin-left: 20px;width:800px'>
       <thead>
         <tr>
-          <th style="width:50px;text-align: center;"><input type="checkbox"></th>
           <th style="width:50px;text-align: center;">Id</th>
           <th style="width:200px;text-align: center;">分类名</th>
           <th style="width:200px;text-align: center;">添加时间</th>
-          <th style="width:100px;text-align: center;">操作</th>
+          <th style="width:80px;text-align: center;">操作</th>
         </tr> 
       </thead>
       <tbody>
-        <tr>
+        <!-- <tr>
           <td style="text-align: center;"><input type="checkbox"></td>
           <td style="text-align: center;">001</td>
           <td style="text-align: center;">进口水果</td>
@@ -95,7 +102,7 @@
               <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
               <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>  
     
@@ -107,6 +114,48 @@
     © layui.com - 底部固定区域
   </div>
 </div>
+
+<!-- 添加商品分类 -->
+<div class='userShade addCategory'>
+    <div class="userTop">
+      <p>增加商品分类</p>
+      <div class="userClose categoryClose">
+        x
+      </div>
+    </div>
+    <div class="userBottom">
+        <div class="userBox">
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类名</label>
+                <div class="layui-input-block">
+                  <input type="text" name="title" required  lay-verify="required" placeholder="请输入分类名" autocomplete="off" class="layui-input" style='width:200px;' id="addtxt">
+                </div>
+              </div>
+           <button class="layui-btn AlertBtn" style='margin:10px 0 0 108px' id= "addAlterBtn">
+               确认
+             </button>
+        </div>
+     </div>
+</div>
+
+<!-- 编辑分类 -->
+<div class='categoryShade editCategory' >
+    <div class="categoryTop">
+      <p>编辑分类</p>
+      <div class="categoryClose">
+        x
+      </div>
+    </div>
+    <div class="categoryBottom">
+        <div class="categoryBox">
+           <p class='listName'>分类名：<input type="text" name="" class="editTxt" id="" placeholder="输入分类名"></p>
+           <button class="layui-btn AlertBtn" style='margin:20px 0 0 58px' id="editAlterBtn" >
+               确认
+             </button>
+        </div>
+     </div>
+</div>
+
 <script src="../layui-v2.4.5/layui/layui.js"></script>
 <script>
 //JavaScript代码区域

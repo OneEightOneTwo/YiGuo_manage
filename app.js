@@ -11,6 +11,8 @@ var categoryRouter = require('./routes/category.js');
 var goodsRouter = require('./routes/goods.js');
 var loginsRouter = require('./routes/login.js');
 var orderRouter = require('./routes/order.js');
+var uploadRouter=require('./routes/upload.js');
+var tokenverifyRouter=require('./routes/tokenverify.js');
 
 var app = express();
 
@@ -25,12 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //定义路由的进入路径
-app.use('/', indexRouter);
+app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 app.use('/category', categoryRouter);
 app.use('/goods', goodsRouter);
 app.use('/login', loginsRouter);
 app.use('/order', orderRouter);
+app.use('/upload', uploadRouter);
+app.use('/tokenverify', tokenverifyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
