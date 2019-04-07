@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>YiGuo商品列表</title>
+    <style>
+     .page {
+            padding: 20px;
+        }
+        
+        .page span {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: #d8d8d8;
+            text-align: center;
+            line-height: 30px;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .page .active{
+          background:lightcoral;
+          color:#fff;
+        }
+    </style>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../stylesheets/add.css">
+    <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
+    <script src="../layui-v2.4.5/layui/layui.js"></script>
+    <script src="../javascripts/jquery.js"></script>
+    <script src="../javascripts/goodlist.js"></script>
+    <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">YiGuo后台管理</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          贤心
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退了</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="goodlist.html">商品列表</a></dd>
+            <dd><a href="category.html">商品分类</a></dd>
+            <dd><a href="addgood.html">添加商品</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="userlist.html">用户列表</a></dd>
+            <dd><a href="adduser.html">添加用户</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="order.html">订单列表</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 --> 
+    <div style="padding: 15px;"class='table'>
+         <div style="padding: 10px 0 0 20px;">
+            <button class="layui-btn addBtn ">
+                        <i class="layui-icon">&#xe608;</i> 添加
+            </button>
+                <span style="color:#009E94;margin-left: 60px">商品查询：</span>
+                <div class="layui-inline">
+                  <input class="layui-input goodsname" name="id" id="demoReload" autocomplete="off" placeholder="输入关键字进行搜索">
+                </div>
+                <button class="layui-btn search" data-type="reload" style='margin-left: 10px'>搜索</button>
+                <span style="color:#009E94;margin-left: 120px">分类查询：</span>
+                <div class="layui-inline">
+                  <input class="layui-input classify" name="id" id="demoReload" autocomplete="off" placeholder="输入关键字进行搜索">
+                </div>
+                <button class="layui-btn searchs" data-type="reload" style='margin-left: 10px'>搜索</button>
+                
+            <table class="layui-table" style='width:100%;margin-top: 20px;'>
+              <thead>
+                <tr>
+                  <th style="width:20px;text-align:center;">ID</th>
+                  <th style='width:12%;text-align:center;'>商品名称</th>
+                  <th style='width:20%;text-align:center;'>商品图片</th>
+                  <th style='width:10%;text-align:center;'>分类</th>
+                  <th style='width:10%;text-align:center;'>已售出</th>
+                  <th style='width:10%;text-align:center;' class='paixu'>
+                    售价
+                    <i class="upprice"></i>
+                    <i class="downprice"></i>
+                  </th>
+                  <th style='width:10%;text-align:center;' class='pai'>
+                    库存
+                    <i class="upInventory" ></i>
+                    <i class="downInventory"></i>
+                  </th>
+                  <th>状态</th>
+                  <th style='width:11%;text-align:center;'>添加时间</th>
+                  <th style='width:16%;text-align:center;'>操作</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <!-- <tr>
+                  <td >
+                    <input type="checkbox" name="" title="写作" lay-skin="primary" >
+                  </td>
+                  <td>01</td>
+                  <td>香梨</td>
+                  <td><img src="../images/1.jpg" alt=""></td>
+                  <td>国产水果</td>
+                  <td>30</td>
+                  <td>28</td>
+                  <td>400</td>
+                  <td>time</td>
+                  <td>
+                      <button class="layui-btn layui-btn-sm" style='margin-left: 15px;'>
+                        <i class="layui-icon">&#xe642;</i>
+                      </button>
+                      <button class="layui-btn layui-btn-sm">
+                        <i class="layui-icon">&#xe640;</i>
+                      </button>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+            <p class="page" id="page">
+              <!-- <span class="active">1</span>
+              <span>2</span>
+              <span>3</span> -->
+            </p>
+       </div>
+    </div>
+<!-- 点击修改跳出弹窗 -->
+    <div class="goodEdit">
+      <div class="goodEditTop">
+          <p>编辑商品信息</p>
+          <div class="goodsCloses">
+            x
+          </div>
+      </div>
+    <div class="goodEditBottom">
+         <!-- <div class="EditConnect">
+             <img src="../images/1.jpg" alt="">
+           <li>
+             <p>图片名称&nbsp;：国产红霞草莓1盒(约400g/盒)</p>
+             <p>分类&nbsp;：国产水果</p>
+             <p>原价&nbsp;：￥30</p>
+             <p>现价&nbsp;：<input type="text" placeholder="￥28.8" class="new"></p>
+             <p>库存&nbsp;：<input type="text" placeholder="￥28.8" class="cun"></p>
+             <p>添加时间&nbsp;：2018.10.20 14:29:10</p>
+           </li>
+         </div>
+          <div>
+            <button class="layui-btn btnOne">确认修改</button>
+            <button class="layui-btn btnTwo">取消修改</button>
+          </div> -->
+  </div>
+  <!-- ========================================= -->
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com - 底部固定区域
+  </div>
+</div>
+
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+
+//==================================
+
+</script>
+
+
+</body>
+</html>

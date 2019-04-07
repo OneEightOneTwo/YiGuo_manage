@@ -1,8 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    </body>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>YiGuo登录</title>
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+</head>
+<body>
+
+<div id="content">
+    <div class="login-header">
+ 			易果生鲜
+    </div>
+    <form>
+        <div class="login-input-box">
+            <span class="icon icon-user"><i class="layui-icon">&#xe66f;</i></span>
+            <input type="text" placeholder="请输入用户名" id='username'>
+        </div> 
+        <div class="login-input-box">
+            <span class="icon icon-password"><i class="layui-icon">&#xe673;</i></span>
+            <input type="password" placeholder="请输入密码" id='password'>
+        </div>
+    </form>
+    <div class="remember-box">
+        <label>
+            <input type="checkbox" style='cursor: pointer;' class='remember'>&nbsp;记住我
+        </label>
+    </div>
+    <div class="login-button-box">
+        <button style='cursor: pointer;' id='loginBtn'>登录</button>
+    </div>
+    <div class="logon-box">
+        <a href="">忘记密码？</a>
+        <a href="">还没注册？</a>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+         (()=>{
+            let username=document.querySelector('#username');
+            let password=document.querySelector('#password');
+            let loginBtn=document.querySelector('#loginBtn');
+            //点击登录按键
+            loginBtn.onclick=()=>{
+                let _username=username.value;
+                let _password=password.value;
+   
+                if(_username&&_password){
+                     let data=`name=${_username}&password=${_password}`;
+                        Login(data);
+                       
+ 
+                }else{
+                    alert('登录信息不完整');
+                }
+            }
+           
+         })();
+</script>
 </html>

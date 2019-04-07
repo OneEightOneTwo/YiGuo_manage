@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局 - Layui</title>
   <link rel="stylesheet" type="text/css" href="layui-v2.4.5/layui/css/layui.css" />
+  <script src="javascripts/echarts.min.js"></script>
+  <script src="javascripts/index.js"></script>
+  <script src="javascripts/jquery.js"></script>
   <script type="text/javascript" src="layui-v2.4.5/layui/layui.js">
+  
        
   </script>
 </head>
@@ -49,22 +53,22 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">商品管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">商品列表</a></dd>
-            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="html/goodlist.html">商品列表</a></dd>
+            <dd><a href="html/category.html">商品分类</a></dd>
             <dd><a href="html/addgood.html">添加商品</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">用户列表</a></dd>
-            <dd><a href="javascript:;">添加用户</a></dd>
+            <dd><a href="html/userlist.html">用户列表</a></dd>
+            <dd><a href="html/adduser.html">添加用户</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">订单管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">订单列表</a></dd>
+            <dd><a href="html/order.html">订单列表</a></dd>
           </dl>
         </li>
       </ul>
@@ -75,7 +79,8 @@
     <!-- 内容主体区域 -->
 
     <div style="padding: 15px;">
-        内容主体区域
+      <div id="main2" style="width: 400px;height:300px;float: left;margin-right:50px"></div>
+      <div id="main1" style="width: 400px;height:300px;float: left;"></div>
     </div>
 
   </div>
@@ -85,7 +90,7 @@
     © layui.com - 底部固定区域
   </div>
 </div>
-<script src="../src/layui.js"></script>
+
 <script>
 //JavaScript代码区域
 layui.use('element', function(){
