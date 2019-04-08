@@ -5,12 +5,31 @@ function showUsername(){
     let userSession=sessionStorage.getItem('users');
     if(userLocal||userSession){
         let username;
+<<<<<<< HEAD
         if(userLocal){
             username=JSON.parse(userLocal).username;
         }else{
             username=JSON.parse(userSession).username;
         }
         // console.log(username);
+=======
+        let id;
+
+        if(userLocal){
+            username=JSON.parse(userLocal).username;
+            id=JSON.parse(userLocal).identity;
+        }else{
+            username=JSON.parse(userSession).username;
+            id=JSON.parse(userSession).identity;
+        }
+        // console.log(id);
+        if(id=="超级管理员"){
+            // console.log(11);
+        }else{
+            // console.log(22);
+            $('.addUserLi').css('display','none');
+        }
+>>>>>>> dev
         $('.layui-layout-right span').html(username);
     }else{
         location.href='login.html';
@@ -25,4 +44,13 @@ function outUsername(){
         sessionStorage.removeItem('users');
         location.reload();
     })
+<<<<<<< HEAD
 }
+=======
+}
+
+
+// $(()=>{
+
+// })
+>>>>>>> dev

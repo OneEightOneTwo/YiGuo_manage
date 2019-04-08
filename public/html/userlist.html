@@ -1,86 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" type="text/css" href="../layui-v2.4.5/layui/css/layui.css" />
-    <script type="text/javascript" src="../layui-v2.4.5/layui/layui.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>YiGuo用户列表</title>
+  <link rel="stylesheet" href="../layui-v2.4.5/layui/css/layui.css">
+  <link rel="stylesheet" href="../stylesheets/add.css">
+  <script src="../javascripts/jquery.js"></script>
+  <script type="text/javascript" src="../javascripts/public.js"></script>
+  <script src="../layui-v2.4.5/layui/layui.js"></script>
+  <script src="../javascripts/users.js"></script>
 </head>
+
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
-    <div class="layui-logo">YiGuo后台管理</div>
-    <!-- 头部区域（可配合layui已有的水平导航） -->
-    <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
-        </dl>
-      </li>
-    </ul>
-    <ul class="layui-nav layui-layout-right">
-      <li class="layui-nav-item">
-        <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
-        </a>
-        <dl class="layui-nav-child">
-          <dd><a href="">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
-    </ul>
-  </div>
-  
-  <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">商品管理</a>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo">YiGuo后台管理系统</div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="">控制台</a></li>
+        <li class="layui-nav-item"><a href="">商品管理</a></li>
+        <li class="layui-nav-item"><a href="">用户</a></li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">其它系统</a>
           <dl class="layui-nav-child">
-            <dd><a href="goodlist.html">商品列表</a></dd>
-            <dd><a href="category.html">商品分类</a></dd>
-            <dd><a href="addgood.html">添加商品</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item layui-nav-itemed">
-          <a href="javascript:;">用户管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="userlist.html">用户列表</a></dd>
-            <dd><a href="adduser.html">添加用户</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item layui-nav-itemed">
-          <a href="javascript:;">订单管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="order.html">订单列表</a></dd>
+            <dd><a href="">邮件管理</a></dd>
+            <dd><a href="">消息管理</a></dd>
+            <dd><a href="">授权管理</a></dd>
           </dl>
         </li>
       </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            <span>贤心</span>
+          </a>
+         <!--  <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl> -->
+        </li>
+        <li class="layui-nav-item"><a href=""  id="outName">退了</a></li>
+      </ul>
     </div>
-  </div>
 
+    <div class="layui-side layui-bg-black">
+      <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed">
+            <a class="" href="javascript:;">商品管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="goodlist.html">商品列表</a></dd>
+              <dd><a href="category.html">商品分类</a></dd>
+              <dd><a href="addgood.html">添加商品</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">用户管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="userlist.html">用户列表</a></dd>
+              <dd class="addUserLi"><a href="adduser.html">添加用户</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item layui-nav-itemed">
+            <a href="javascript:;">订单管理</a>
+            <dl class="layui-nav-child">
+              <dd><a href="order.html">订单列表</a></dd>
+            </dl>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    
     <div class="layui-body">
       <!-- 内容主体区域 -->
       <div style="padding: 15px;">
         <div style='margin:30px 0 30px 20px'>
-          <button class="layui-btn">增加&nbsp;&nbsp;<i class="layui-icon"></i></button>
+          <button class="layui-btn add">增加&nbsp;&nbsp;<i class="layui-icon"></i></button>
           <button class="layui-btn allDelete">删除&nbsp;&nbsp;<i class="layui-icon"></i></button>
         </div>
-        <table class="layui-table" lay-even="" lay-skin="row" style='margin-left: 20px;width:780px'>
+        <table class="layui-table" lay-even="" lay-skin="row" style='margin-left: 20px;width:880px'>
           <thead>
             <tr>
-              <th style="width:50px;text-align: center;"><input type="checkbox"></th>
+              <th style="width:50px;text-align: center;"><input type="checkbox" id="allCheck"></th>
+              <th style="width:50px;text-align: center;">Id</th>
               <th style="width:150px;text-align: center;">用户名</th>
               <th style="width:70px;text-align: center;">性别</th>
               <th style="width:100px;text-align: center;">角色</th>
@@ -88,8 +96,8 @@
               <th style="width:130px;text-align: center;">操作</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody class="tbody">
+            <!-- <tr>
               <td style="text-align: center;"><input type="checkbox"></td>
               <td style="text-align: center;">郑若涵</td>
               <td style="text-align: center;">女</td>
@@ -99,17 +107,50 @@
                 <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
                 <button class="layui-btn layui-btn-sm"><i class="layui-icon"></i></button>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
-
-
-
-
-
-      </div>
+      </div> 
     </div>
 
+
+
+     <!-- 超级管理员点击编辑时出现弹窗 -->
+     <div class='usersShade'>
+        <div class="userTop">
+          <p>编辑用户信息</p>
+          <div class="userCloses">
+            x
+          </div>
+        </div>
+        <div class="userBottom">
+          <div class="userBox">
+            <!-- 用户名 -->
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户名</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" required lay-verify="required" placeholder="修改用户名" autocomplete="off"
+                  class="layui-input username" id="AlterNameU" style='width:200px;'>
+              </div>
+
+            </div>
+            <!--管理员角色管理  -->
+            <div class="layui-form-item">
+              <label class="layui-form-label">角色管理</label>
+              <div class="layui-input-block" style='width:500px'>
+                <select name="city" lay-verify="required" style='width:150px;height:30px;border:1px solid #ccc'
+                  id="AlterIdentU">
+                  <option value="管理员">管理员</option>
+                  <option value="超级管理员">超级管理员</option>
+                </select>
+              </div>
+            </div>
+            <button class="layui-btn" style='margin:10px 0 0 108px' id='adminBtn'>
+              确认
+            </button>
+          </div>
+        </div>
+      </div>
     <div class="layui-footer">
       <!-- 底部固定区域 -->
       © layui.com - 底部固定区域
@@ -121,6 +162,8 @@
       var element = layui.element;
 
     });
+
+
   </script>
 </body>
 

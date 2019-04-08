@@ -1,0 +1,129 @@
+/* 用户列表遮罩 */
+/* 超级管理员点击编辑遮罩 */
+.usersShade{
+    width: 450px;
+    height: 300px;
+    border:1px solid #ccc;
+    background: #FFF;
+    position: absolute;
+    top:30%;
+    left:40%;
+    transform: (-50%,-50%);
+    z-index: 999;
+    display: none;
+}
+.userTop .userCloses{
+    width: 20px;
+    height: 20px;
+    color:#fff;
+    font-size: 20px;
+    float: right;
+    padding: 8px 5px 0 0;
+    cursor: pointer;
+}
+.userTop{
+    width: 100%;
+    height: 40px;
+    background: #16181D;
+}
+.userTop p{
+    color:#FFF;
+    line-height: 40px;
+    font-size: 15px;
+    text-indent: 20px;
+    float: left;
+}
+.userBottom{
+    margin-top: 30px;
+}
+/* 商品列表 */
+table{
+    text-align: center;
+  }
+  .paixu,.pai{
+    position: relative;
+  }
+  .upprice,.upInventory{
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    border:5px solid;
+    border-color: #000 transparent transparent transparent;
+    top:28px;
+    left:65px;
+  }
+  .downprice,.downInventory{
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    border:5px solid;
+    border-color: transparent transparent  #000 transparent;
+    top:15px;
+    left:65px;
+  }
+/* 商品列表编辑 */
+.goodEdit{
+    width: 500px;
+    height: 310px;
+    position:fixed;
+    top:19%;
+    left:35%;
+    z-index: 999;
+    background: #fff;
+    border:1px solid #ccc;
+    display: none;
+}
+.goodEditTop{
+    width: 100%;
+    height: 40px;
+    background: #16181D;
+}
+.goodEditTop .goodsCloses{
+    width: 20px;
+    height: 20px;
+    color:#fff;
+    font-size: 20px;
+    float: right;
+    padding: 8px 5px 0 0;
+    cursor: pointer;
+}
+.goodEditTop p{
+    color:#FFF;
+    line-height: 40px;
+    font-size: 15px;
+    text-indent: 20px;
+    float: left;
+}
+.goodEditBottom{
+    width: 100%;
+    height: 260px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.EditConnect li{
+    float: left;
+    width:250px;
+    font-size:13px;
+    line-height: 28px;
+}
+.EditConnect  img{
+    width:180px;
+    padding:0 20px 0 20px;
+    float: left;
+}
+.new,.cun{
+    width:100px;
+}
+.EditConnect li p:nth-child(2),
+.EditConnect li p:nth-child(3),
+.EditConnect li p:nth-child(4),
+.EditConnect li p:nth-child(5){
+    padding-left: 25px;
+}
+.btnOne,.btnTwo{
+    margin-top: 11px;
+}
+.btnOne{
+    margin-left: 10px;
+    margin-right: 20px
+}
