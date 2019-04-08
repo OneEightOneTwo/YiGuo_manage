@@ -201,5 +201,12 @@ $(function () {
         location.href = 'adduser.html';
     })
 
+    
+    //=======用户名渲染=================
+    showUsername();
+
+    //点击退出按键
+    outUsername();
+
 
 })

@@ -23,7 +23,7 @@ router.post('/searchname',async function(req, res, next) {
   let {
      name
   }=req.body;
-  await db(`SELECT * FROM orders where name='${name}'`,null,(data)=>{
+  await db(`SELECT * FROM orders where name LIKE '%${name}%'`,null,(data)=>{
     // console.log(data);
     res.send(data);
   })

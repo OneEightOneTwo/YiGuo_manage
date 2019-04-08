@@ -323,4 +323,14 @@ function page(str){
         }).join('');
         $('.goodEditBottom').html(res);
     }
+
+
+    //=======用户名渲染=================
+    showUsername();
+
+    //点击退出按键
+    outUsername();
+
+
+    
 })
