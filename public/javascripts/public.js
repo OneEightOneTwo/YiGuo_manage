@@ -5,12 +5,22 @@ function showUsername(){
     let userSession=sessionStorage.getItem('users');
     if(userLocal||userSession){
         let username;
+        let id;
+
         if(userLocal){
             username=JSON.parse(userLocal).username;
+            id=JSON.parse(userLocal).identity;
         }else{
             username=JSON.parse(userSession).username;
+            id=JSON.parse(userSession).identity;
         }
-        // console.log(username);
+        console.log(id);
+        if(id=="超级管理员"){
+            // console.log(11);
+        }else{
+            // console.log(22);
+            $('.addUserLi').css('display','none');
+        }
         $('.layui-layout-right span').html(username);
     }else{
         location.href='login.html';
@@ -26,3 +36,8 @@ function outUsername(){
         location.reload();
     })
 }
+
+
+// $(()=>{
+
+// })

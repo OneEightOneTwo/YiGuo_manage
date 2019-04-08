@@ -2,12 +2,12 @@ $(function () {
     //点击提交时插入数据库
     $('.submit').on('click', function () {
         var username = $('.username').val();
-        var password = $('.password').val();
+        var psw = $('.password').val();
         var identity = $('.identity').find(`.layui-anim dd`).filter('.layui-this').html();//获取身份
         var sex = $('.userSex').find(`.layui-form-radioed div`).html();//获取性别
         // console.log(username,password,identity,sex)
         //不为空判断
-        if (username && password && identity && sex) {
+        if (username && psw && identity && sex) {
             //用户名是否存在判断
             $.ajax({
                 type: 'get',
@@ -27,7 +27,7 @@ $(function () {
                             url: 'http://localhost:10086/users/message',
                             data: {
                                 'username': username,
-                                'password':password,
+                                'psw':psw,
                                 'identity':identity,
                                 'sex':sex,
                             },

@@ -130,7 +130,10 @@ $(function () {
 
 //--------------列表总数据渲染封装
     function show(str) {
+        // console.log(str);
         var res = str.map(function (item, idx) {
+            var picture=item.picture.split('&');
+            // console.log(picture);
             //时间戳转成日期格式
             var newDates = item.addTime;
             // console.log(newDates)
@@ -144,10 +147,10 @@ $(function () {
             return `<tr data-id=${item.id}>
                     <td>${idx + 1}</td>
                     <td>${item.name}</td>
-                    <td><img src="../images/${item.picture}" alt=""></td>
+                    <td><img src="../images/${picture[0]}" alt=""></td>
                     <td>${item.classify}</td>
-                    <td>${item.sell}</td>
-                    <td>${item.newprice}</td>
+                    <td>${item.oldprice}</td>
+                    <td>${item.nowprice}</td>
                     <td>${item.inventory}</td>
                     <th class='status'>${item.status}</th>
                     <td>${Y+M+D+h+m+s}</td>
@@ -304,16 +307,26 @@ function page(str){
 //-----------------编辑数据渲染封装
     function list(str) {
         var res = str.map(function (item) {
+            var newDates = item.addTime;
+            // console.log(newDates)
+            var date = new Date(newDates*1);
+            Y = date.getFullYear() + '-';
+            M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+            D = date.getDate() + ' ';
+            h = date.getHours() + ':';
+            m = date.getMinutes() + ':';
+            s = date.getSeconds(); 
+            var picture=item.picture.split('&');
             return ` 
             <div class="EditConnect">
-                <img src="../images/${item.picture}" alt="">
+                <img src="../images/${picture[0]}" alt="">
                 <li>
                     <p>图片名称&nbsp;：${item.name}</p>
                     <p>分类&nbsp;：${item.classify}</p>
-                    <p>已售出&nbsp;：${item.sell}</p>
-                    <p>现价&nbsp;：<input type="text" placeholder="￥${item.newprice}" class="new"></p>
+                    <p>原价&nbsp;：${item.oldprice}</p>
+                    <p>现价&nbsp;：<input type="text" placeholder="￥${item.nowprice}" class="new"></p>
                     <p>库存&nbsp;：<input type="text" placeholder="${item.inventory}" class="cun"></p>
-                    <p>添加时间&nbsp;：${item.addTime}</p>
+                    <p>添加时间&nbsp;：${Y+M+D+h+m+s}</p>
                 </li>
         </div>
         <div>

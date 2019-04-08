@@ -13,14 +13,14 @@ router.get('/all', async (req, res, next) =>{
 
 //价格升序
 router.get('/up', async(req, res, next) =>{
-    await db('SELECT * from goodslist ORDER BY newprice ASC ', null, (data) => {
+    await db('SELECT * from goodslist ORDER BY nowprice ASC ', null, (data) => {
         // console.log(data); 
     res.send(data);
     })
 });
 //价格降序
 router.get('/down', async(req, res, next) =>{
-    await db('SELECT * from goodslist ORDER BY newprice DESC ', null, (data) => {
+    await db('SELECT * from goodslist ORDER BY nowprice DESC ', null, (data) => {
         // console.log(data); 
     res.send(data);
     })
@@ -67,7 +67,7 @@ router.get('/id', async(req, res, next) =>{
  //编辑确定时把价格和库存量数据更新到数据库
  router.get('/price', async(req, res, next) =>{
     let {newprice,inventory,id}=req.query;
-    await db(`UPDATE goodslist set newprice = '${newprice}' ,inventory = '${inventory}' where id = ${id}`, null, (data) => {
+    await db(`UPDATE goodslist set nowprice = '${newprice}' ,inventory = '${inventory}' where id = ${id}`, null, (data) => {
                // console.log(data.length); 
     res.send(data);
   }); 
@@ -75,7 +75,7 @@ router.get('/id', async(req, res, next) =>{
 //编辑确定时把价格数据更新到数据库
   router.get('/priceOne', async(req, res, next) =>{
     let {newprice,id}=req.query;
-    await db(`UPDATE goodslist set newprice = '${newprice}' where id = ${id}`, null, (data) => {
+    await db(`UPDATE goodslist set nowprice = '${newprice}' where id = ${id}`, null, (data) => {
                // console.log(data.length); 
     res.send(data);
   }); 
@@ -104,6 +104,34 @@ router.get('/data', async(req, res, next) =>{
     res.send(data);
     })
 });
+
+
+router.post('/addgoods', async(req, res, next) =>{
+    // console.log(req.body);
+    let {
+        name,
+        picture,
+        classify,
+        oldprice,
+        nowprice,
+        inventory,
+        status,
+        introduce,
+    }=req.body;
+    // await console.log(name,picture,classify,oldprice,nowprice,inventory,status,introduce);
+    await db(`INSERT INTO goodslist(name,picture,classify,oldprice,nowprice,inventory,addTime,status,introduce) VALUES('${name}','${picture}','${classify}','${oldprice}','${nowprice}','${inventory}','${Date.now()}','${status}','${introduce}')`,null,(data)=>{
+        // console.log(data);
+        var {affectedRows}=data;
+        if(affectedRows>0){
+            res.send('success');
+        }else{
+            res.send('faile');
+        }
+    })
+    // res.send('添加商品');
+});
+
+
 
 
 module.exports = router;

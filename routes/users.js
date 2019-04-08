@@ -51,9 +51,9 @@ router.post('/deleteOne', async(req, res, next) =>{
 
 //添加用户时把数据插入到数据库
 router.post('/message', async(req, res, next) =>{
-  let {username,password,identity,sex}=req.body;
-  // console.log(username,password,identify,sex);
-  await db(`INSERT into users (username,password,identity,sex,time) VALUES('${username}','${password}','${identity}','${sex}','${Date.now()}')`, null, (data) => {
+  let {username,psw,identity,sex}=req.body;
+  // console.log(username,psw,identify,sex);
+  await db(`INSERT into users (username,psw,identity,sex,time) VALUES('${username}','${psw}','${identity}','${sex}','${Date.now()}')`, null, (data) => {
     res.send(data);
 }); 
 });

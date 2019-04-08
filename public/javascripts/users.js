@@ -171,7 +171,7 @@ $(function () {
             //时间戳转成日期格式
             var newDates = item.time;
             //  console.log(newDates)
-            var date = new Date(newDates);
+            var date = new Date(newDates*1);
             Y = date.getFullYear() + '-';
             M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
             D = date.getDate() + ' ';
