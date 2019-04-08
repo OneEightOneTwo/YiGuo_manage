@@ -3,7 +3,8 @@ var router = express.Router();
 let db = require('../db/mysql');//引入mysql连接
 
 //查询整个数据库进行渲染
-router.get('/all', async(req, res, next) =>{
+router.get('/all', async (req, res, next) =>{
+    // await res.send('商品返回信息');
     await db('select * from goodslist', null, (data) => {
         // console.log(data); 
     res.send(data);
