@@ -14,7 +14,7 @@ function showUsername(){
             username=JSON.parse(userSession).username;
             id=JSON.parse(userSession).identity;
         }
-        console.log(id);
+        // console.log(id);
         if(id=="超级管理员"){
             // console.log(11);
         }else{

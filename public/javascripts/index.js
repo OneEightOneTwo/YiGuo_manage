@@ -49,12 +49,24 @@ $(()=>{
             let userSession=sessionStorage.getItem('users');
             if(userLocal||userSession){
                 let username;
+                let id;
+
                 if(userLocal){
                     username=JSON.parse(userLocal).username;
+                    id=JSON.parse(userLocal).identity;
+
                 }else{
                     username=JSON.parse(userSession).username;
+                    id=JSON.parse(userSession).identity;
+
                 }
                 // console.log(username);
+                if(id=="超级管理员"){
+                    // console.log(11);
+                }else{
+                    // console.log(22);
+                    $('.addUserLi').css('display','none');
+                }
                 $('.layui-layout-right span').html(username);
             }else{
                 location.href='html/login.html';
@@ -75,7 +87,7 @@ $(()=>{
         //涵涵========================
         //
         var myChart2 = echarts.init(document.getElementById('main2'));
-        var myChart1 = echarts.init(document.getElementById('main1'));
+        // var myChart1 = echarts.init(document.getElementById('main1'));
         var arr=[];
         var cos = [];
         var cos1 =[];
@@ -133,7 +145,7 @@ $(()=>{
                 smooth: true
             }]
         };
-        myChart1.setOption(option1);
+        // myChart1.setOption(option1);
             }
         });
         
