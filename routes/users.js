@@ -1,15 +1,5 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  // res.render('index', { title: 'Express' });
-    res.send('用户路由信息');
-
-});
-
-=======
 let db = require('../db/mysql');//引入mysql连接
 
 //整个用户列表查询
@@ -67,5 +57,4 @@ router.post('/message', async(req, res, next) =>{
     res.send(data);
 }); 
 });
->>>>>>> dev
 module.exports = router;

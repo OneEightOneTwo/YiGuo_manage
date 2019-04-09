@@ -5,14 +5,6 @@ function showUsername(){
     let userSession=sessionStorage.getItem('users');
     if(userLocal||userSession){
         let username;
-<<<<<<< HEAD
-        if(userLocal){
-            username=JSON.parse(userLocal).username;
-        }else{
-            username=JSON.parse(userSession).username;
-        }
-        // console.log(username);
-=======
         let id;
 
         if(userLocal){
@@ -29,7 +21,6 @@ function showUsername(){
             // console.log(22);
             $('.addUserLi').css('display','none');
         }
->>>>>>> dev
         $('.layui-layout-right span').html(username);
     }else{
         location.href='login.html';
@@ -37,16 +28,12 @@ function showUsername(){
 }
 
 //点击用户名退出按键
-
 function outUsername(){
     $('#outName').on('click',function(){
         localStorage.removeItem('users');
         sessionStorage.removeItem('users');
         location.reload();
     })
-<<<<<<< HEAD
-}
-=======
 }
 
 
