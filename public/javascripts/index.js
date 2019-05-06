@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> dev
 $(()=>{
     //========================
 // 基于准备好的dom，初始化echarts实例
@@ -52,14 +48,6 @@ $(()=>{
             let userSession=sessionStorage.getItem('users');
             if(userLocal||userSession){
                 let username;
-<<<<<<< HEAD
-                if(userLocal){
-                    username=JSON.parse(userLocal).username;
-                }else{
-                    username=JSON.parse(userSession).username;
-                }
-                // console.log(username);
-=======
                 let id;
 
                 if(userLocal){
@@ -78,7 +66,6 @@ $(()=>{
                     // console.log(22);
                     $('.addUserLi').css('display','none');
                 }
->>>>>>> dev
                 $('.layui-layout-right span').html(username);
             }else{
                 location.href='html/login.html';
@@ -94,9 +81,6 @@ $(()=>{
                 location.reload();
             })
         }
-<<<<<<< HEAD
-})
-=======
 
 
         //涵涵========================
@@ -177,4 +161,3 @@ $(()=>{
 // window.onload = () =>{
     
 // }
->>>>>>> dev
